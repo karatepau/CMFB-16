@@ -19,7 +19,7 @@
   <lib desc="#BFH-Praktika" name="10"/>
   <lib desc="#Input/Output-Extra" name="11"/>
   <lib desc="#Soc" name="12"/>
-  <lib desc="file#../AMFB-16/AMFB-16.circ" name="13"/>
+  <lib desc="file#ALU/AMFB-16.circ" name="13"/>
   <main name="CPU"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
