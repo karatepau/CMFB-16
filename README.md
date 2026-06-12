@@ -15,17 +15,17 @@ The project is split across three `.circ` files:
 ## Overall Architecture
 
 <!-- SCREENSHOT: Logisim > GMFB.circ > test — full view showing Computer + GPU + RGB Video + Keyboard wired together -->
-![Full system overview](images/fullcomputer_overview.png)
+![Full system overview](<img width="1011" height="793" alt="image" src="https://github.com/user-attachments/assets/ef3fd684-4e3d-4c78-b716-18997fd3e2e5" />)
 
 ```
 ┌─────────────────────────────────────────────────────┐
 │                   FullComputer                      │
 │  ┌────────────┐   ┌──────────────────────────────┐  │
 │  │  Keyboard  │   │         Computer             │  │
-│  └─────┬──────┘   │  ┌──────┐  ┌──────┐         │  │
-│        │          │  │ ROM  │  │ RAM  │         │  │
-│        └──────────┤  │ 16@64│  │ 16@16│         │  │
-│                   │  └──────┘  └──────┘         │  │
+│  └─────┬──────┘   │  ┌──────┐  ┌──────┐          │  │
+│        │          │  │ ROM  │  │ RAM  │          │  │
+│        └──────────┤  │ 16@64│  │ 16@16│          │  │
+│                   │  └──────┘  └──────┘          │  │
 │                   │  ┌───────────────────────┐   │  │
 │                   │  │         CPU           │   │  │
 │                   │  │  PC · Regs · Decode   │   │  │
