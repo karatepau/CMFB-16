@@ -19,8 +19,8 @@
   <lib desc="#BFH-Praktika" name="10"/>
   <lib desc="#Input/Output-Extra" name="11"/>
   <lib desc="#Soc" name="12"/>
-  <lib desc="file#ALU/AMFB-16.circ" name="13"/>
-  <lib desc="file#GPU/GMFB.circ" name="14"/>
+  <lib desc="file#GPU/GMFB.circ" name="13"/>
+  <lib desc="file#ALU/AMFB-16.circ" name="14"/>
   <main name="FullComputer"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
@@ -314,7 +314,7 @@
     <comp lib="1" loc="(490,1560)" name="OR Gate">
       <a name="size" val="30"/>
     </comp>
-    <comp lib="14" loc="(1470,1630)" name="GPU"/>
+    <comp lib="13" loc="(1470,1630)" name="GPU"/>
     <comp lib="2" loc="(1350,1540)" name="Multiplexer">
       <a name="width" val="16"/>
     </comp>
@@ -716,24 +716,24 @@ a00000e0001 aed00000
     </comp>
     <comp lib="0" loc="(800,1820)" name="Constant"/>
     <comp lib="1" loc="(1420,1820)" name="NOT Gate"/>
-    <comp lib="13" loc="(1020,1000)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1080)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1160)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1240)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1320)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1400)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1480)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1560)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1640)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1720)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,1800)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,600)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,680)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,760)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,840)" name="minihalfadder"/>
-    <comp lib="13" loc="(1020,920)" name="minihalfadder"/>
-    <comp lib="13" loc="(1670,1700)" name="reverse"/>
-    <comp lib="13" loc="(1790,1790)" name="reverse"/>
+    <comp lib="14" loc="(1020,1000)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1080)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1160)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1240)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1320)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1400)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1480)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1560)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1640)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1720)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,1800)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,600)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,680)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,760)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,840)" name="minihalfadder"/>
+    <comp lib="14" loc="(1020,920)" name="minihalfadder"/>
+    <comp lib="14" loc="(1670,1700)" name="reverse"/>
+    <comp lib="14" loc="(1790,1790)" name="reverse"/>
     <comp lib="2" loc="(1440,1790)" name="Multiplexer">
       <a name="width" val="16"/>
     </comp>
@@ -1550,11 +1550,11 @@ a00000e0001 aed00000
       <a name="type" val="output"/>
       <a name="width" val="6"/>
     </comp>
-    <comp lib="13" loc="(4470,3180)" name="reverse"/>
-    <comp lib="13" loc="(4470,3230)" name="reverse"/>
-    <comp lib="13" loc="(4750,3210)" name="ALU"/>
-    <comp lib="13" loc="(4970,3210)" name="reverse"/>
-    <comp lib="13" loc="(4970,3230)" name="reverse"/>
+    <comp lib="14" loc="(4470,3180)" name="reverse"/>
+    <comp lib="14" loc="(4470,3230)" name="reverse"/>
+    <comp lib="14" loc="(4750,3210)" name="ALU"/>
+    <comp lib="14" loc="(4970,3210)" name="reverse"/>
+    <comp lib="14" loc="(4970,3230)" name="reverse"/>
     <comp lib="5" loc="(5070,3260)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="width" val="6"/>
@@ -1883,7 +1883,7 @@ a00000e0001 aed00000
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="FullComputer"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="2048000.0"/>
+    <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(1460,1400)" name="Splitter">
       <a name="bit1" val="0"/>
       <a name="bit10" val="0"/>
