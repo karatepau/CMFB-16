@@ -15,7 +15,7 @@ The project is split across three `.circ` files:
 ## Overall Architecture
 
 <!-- SCREENSHOT: Logisim > GMFB.circ > test — full view showing Computer + GPU + RGB Video + Keyboard wired together -->
-![Full system overview](<img width="1011" height="793" alt="image" src="https://github.com/user-attachments/assets/ef3fd684-4e3d-4c78-b716-18997fd3e2e5" />)
+![Full system overview](https://github.com/user-attachments/assets/ef3fd684-4e3d-4c78-b716-18997fd3e2e5)
 
 ```
 ┌─────────────────────────────────────────────────────┐
