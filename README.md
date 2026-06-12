@@ -14,9 +14,6 @@ The project is split across three `.circ` files:
 
 ## Overall Architecture
 
-<!-- SCREENSHOT: Logisim > GMFB.circ > test — full view showing Computer + GPU + RGB Video + Keyboard wired together -->
-![Full system overview](https://github.com/user-attachments/assets/ef3fd684-4e3d-4c78-b716-18997fd3e2e5)
-
 ```
 ┌─────────────────────────────────────────────────────┐
 │                   FullComputer                      │
@@ -87,7 +84,7 @@ The instruction word is 64 bits wide, split into 6 fields by the decoder's main 
 Contains the core processor circuits.
 
 <!-- SCREENSHOT: Logisim > CMFB-16.circ > FullComputer — full circuit view -->
-![FullComputer circuit](images/fullcomputer_circuit.png)
+![FullComputer circuit](images/full_computer_circuit.png)
 
 #### `FullComputer`
 Top-level circuit. Instantiates `Computer`, the `Keyboard` input component, and the `RGB Video` output.
