@@ -135,15 +135,16 @@ def assemble(input_file, output_file):
                     alu_op=0, we=1,
                     alu_src=(0 if is_reg else 1)):016x}")
 
-            elif op in ('SUB', 'CMP'):
+            elif op == 'CMP':
+                # CMP Ra, Rb/imm  →  flags = Ra - Rb, sin Rd, sin write-back
+                ra = parse_reg(parts[1])
+                is_reg, val = parse_val(parts[2], labels)
+                hex_output.append(f"{pack_instruction(reg_d=0, reg_a=ra, reg_b=(val if is_reg else 0), imm=(0 if is_reg else val), alu_op=1, we=0, alu_src=(0 if is_reg else 1)):016x}")
+
+            elif op == 'SUB':
                 rd, ra = parse_reg(parts[1]), parse_reg(parts[2])
                 is_reg, val = parse_val(parts[3], labels)
-                we = 0 if op == 'CMP' else 1
-                hex_output.append(f"{pack_instruction(reg_d=rd, reg_a=ra,
-                    reg_b=(val if is_reg else 0),
-                    imm=(0 if is_reg else val),
-                    alu_op=1, we=we,
-                    alu_src=(0 if is_reg else 1)):016x}")
+                hex_output.append(f"{pack_instruction(reg_d=rd, reg_a=ra, reg_b=(val if is_reg else 0), imm=(0 if is_reg else val), alu_op=1, we=1, alu_src=(0 if is_reg else 1)):016x}")
 
             elif op == 'MOV':
                 # MOV Rd, Ra  →  Rd = Ra + 0

@@ -153,24 +153,26 @@
       <a name="label" val="Data"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(1460,1460)" name="Tunnel">
+    <comp lib="0" loc="(1460,1440)" name="Tunnel">
       <a name="facing" val="south"/>
-      <a name="label" val="Tick"/>
+      <a name="label" val="WEScreen"/>
     </comp>
-    <comp lib="0" loc="(1470,1620)" name="Tunnel">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(1470,1630)" name="Tunnel">
+      <a name="label" val="WEScreen"/>
+    </comp>
+    <comp lib="0" loc="(1470,1650)" name="Tunnel">
       <a name="label" val="GPUData"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(1470,1640)" name="Tunnel">
+    <comp lib="0" loc="(1470,1670)" name="Tunnel">
       <a name="label" val="RGB"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(1470,1670)" name="Tunnel">
+    <comp lib="0" loc="(1470,1690)" name="Tunnel">
       <a name="label" val="X"/>
       <a name="width" val="6"/>
     </comp>
-    <comp lib="0" loc="(1470,1700)" name="Tunnel">
+    <comp lib="0" loc="(1470,1720)" name="Tunnel">
       <a name="label" val="Y"/>
       <a name="width" val="6"/>
     </comp>
@@ -352,9 +354,8 @@ a00000e0001 aed00000
     <wire from="(1280,1440)" to="(1280,1460)"/>
     <wire from="(1280,1440)" to="(1290,1440)"/>
     <wire from="(1280,1460)" to="(1290,1460)"/>
-    <wire from="(1470,1620)" to="(1470,1630)"/>
-    <wire from="(1470,1640)" to="(1470,1650)"/>
-    <wire from="(1470,1690)" to="(1470,1700)"/>
+    <wire from="(1460,1440)" to="(1460,1460)"/>
+    <wire from="(1470,1710)" to="(1470,1720)"/>
     <wire from="(860,1430)" to="(880,1430)"/>
     <wire from="(860,1490)" to="(880,1490)"/>
     <wire from="(860,1510)" to="(880,1510)"/>
@@ -1883,7 +1884,7 @@ a00000e0001 aed00000
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="FullComputer"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
+    <a name="simulationFrequency" val="2048000.0"/>
     <comp lib="0" loc="(1460,1400)" name="Splitter">
       <a name="bit1" val="0"/>
       <a name="bit10" val="0"/>
@@ -1920,9 +1921,6 @@ a00000e0001 aed00000
       <a name="incoming" val="31"/>
     </comp>
     <comp lib="6" loc="(1100,1400)" name="Keyboard"/>
-    <comp lib="6" loc="(1120,1410)" name="Button">
-      <a name="facing" val="north"/>
-    </comp>
     <comp lib="6" loc="(1400,1360)" name="RGB Video">
       <a name="color" val="565 RGB (16 bit)"/>
       <a name="cursor" val="No Cursor"/>

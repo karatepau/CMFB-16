@@ -7,10 +7,10 @@
 
 # --- Leer R15 y despachar ---
 LI R9, 1
-CMP R9, R15, R9
+CMP R15, R9
 JZ DO_BRESENHAM
 LI R9, 2
-CMP R9, R15, R9
+CMP R15, R9
 JZ DO_FILL
 JMP DONE
 
@@ -22,8 +22,8 @@ LI R3, 0x0000       # dirección actual = 0
 LI R8, 0x0FFF       # dirección final
 
 FILL_LOOP:
-ST R3, R14          # [R3] = color
-CMP R9, R3, R8
+ST R3, R14          # WE activo → pinta píxel
+CMP R3, R8
 JZ DONE
 ADD R3, R3, 1
 JMP FILL_LOOP
@@ -52,7 +52,7 @@ ADD R5, R11, 0
 # --- dx = X1 - X0, luego |dx| y signo_x ---
 SUB R0, R12, R10
 LI R9, 0
-CMP R9, R0, R9
+CMP R0, R9
 JLZ DX_NEG
 LI R6, 1
 JMP DX_DONE
@@ -65,7 +65,7 @@ DX_DONE:
 # --- dy = Y1 - Y0, luego |dy| y signo_y ---
 SUB R1, R13, R11
 LI R9, 0
-CMP R9, R1, R9
+CMP R1, R9
 JLZ DY_NEG
 LI R7, 1
 JMP DY_DONE
@@ -79,7 +79,7 @@ DY_DONE:
 # Detectar eje dominante: si dy > dx → MODO_Y
 # CMP compara R0-R1; si resultado < 0 → dx < dy
 # -----------------------------------------------
-CMP R9, R0, R1
+CMP R0, R1
 JLZ MODO_Y
 
 # -----------------------------------------------
@@ -101,11 +101,11 @@ ADD R3, R3, R3
 ADD R3, R3, R3
 ADD R3, R3, R3      # R3 = cur_y * 64
 ADD R3, R3, R4      # R3 = cur_y * 64 + cur_x
-ST R3, R14
+ST R3, R14          # WE activo → pinta píxel
 
 # Si contador == 0, terminar
 LI R9, 0
-CMP R9, R8, R9
+CMP R8, R9
 JZ DONE
 
 # Siempre avanza X
@@ -113,7 +113,7 @@ ADD R4, R4, R6
 
 # Evaluar p
 LI R9, 0
-CMP R9, R2, R9
+CMP R2, R9
 JLZ PX_NEG
 
 # p >= 0: avanza Y, p += 2*dy - 2*dx
@@ -152,11 +152,11 @@ ADD R3, R3, R3
 ADD R3, R3, R3
 ADD R3, R3, R3      # R3 = cur_y * 64
 ADD R3, R3, R4      # R3 = cur_y * 64 + cur_x
-ST R3, R14
+ST R3, R14          # WE activo → pinta píxel
 
 # Si contador == 0, terminar
 LI R9, 0
-CMP R9, R8, R9
+CMP R8, R9
 JZ DONE
 
 # Siempre avanza Y
@@ -164,7 +164,7 @@ ADD R5, R5, R7
 
 # Evaluar p
 LI R9, 0
-CMP R9, R2, R9
+CMP R2, R9
 JLZ PY_NEG
 
 # p >= 0: avanza X, p += 2*dx - 2*dy
