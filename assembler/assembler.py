@@ -130,14 +130,32 @@ def pseudo_st_imm(addr, val):
     ]
 
 # ==========================================
-# GPU: fire and forget
+# GPU: con polling (espera a que 0xFFFD == 0)
 # ==========================================
 
-def expand_gpu_line(parts, _addr):
+def gpu_poll(current_address):
+    """
+    Espera hasta que [GPU_CMD] == 0 (GPU libre).
+    Usa R13 como temporal (ya reservado para direcciones).
+    Tamaño fijo: 4 instrucciones.
+      LI  R13, GPU_CMD
+      LD  R13, [R13]
+      CMP R13, 0
+      JGZ <poll_start>   # si CMD > 0, GPU ocupada, volver a leer
+    """
+    poll_start = current_address
+    log(f"GPU_POLL @ {poll_start:#06x}")
+    return [
+        *pseudo_li(13, GPU_CMD),
+        pack_instruction(reg_d=13, reg_a=13, mem_read=1, addr_src=1, we=1),
+        pack_instruction(reg_d=0, reg_a=13, imm=0, alu_op=ALU_OPS["CMP"], alu_src=1, we=0),
+        pack_instruction(imm=poll_start, we=0, jgz=1, alu_src=1),
+    ]
+
+def expand_gpu_line(parts, addr):
     """
     GPULINE Rx0 Ry0 Rx1 Ry1 Rcolor
-    Stores 5 coordenadas + CMD=1
-    Total: 5*2 + 3 = 13 instrucciones
+    Poll (4) + 5 coords (10) + CMD=1 (3) = 17 instrucciones
     """
     if len(parts) < 6:
         raise ValueError("GPULINE requiere 5 argumentos: Rx0 Ry0 Rx1 Ry1 Rcolor")
@@ -148,29 +166,30 @@ def expand_gpu_line(parts, _addr):
     rc  = parse_reg(parts[5])
     log(f"GPULINE R{rx0} R{ry0} R{rx1} R{ry1} R{rc}")
     instrs = []
+    instrs += gpu_poll(addr)
     instrs += pseudo_st_reg(GPU_X0,    rx0)
     instrs += pseudo_st_reg(GPU_Y0,    ry0)
     instrs += pseudo_st_reg(GPU_X1,    rx1)
     instrs += pseudo_st_reg(GPU_Y1,    ry1)
     instrs += pseudo_st_reg(GPU_COLOR, rc)
     instrs += pseudo_st_imm(GPU_CMD, 1)
-    assert len(instrs) == 13, f"GPULINE genero {len(instrs)} instrucciones, esperado 13"
+    assert len(instrs) == 17, f"GPULINE genero {len(instrs)} instrucciones, esperado 17"
     return instrs
 
-def expand_gpu_clear(parts, _addr):
+def expand_gpu_clear(parts, addr):
     """
     GPUCLEAR Rcolor
-    Store color + CMD=2
-    Total: 2 + 3 = 5 instrucciones
+    Poll (4) + color (2) + CMD=2 (3) = 9 instrucciones
     """
     if len(parts) < 2:
         raise ValueError("GPUCLEAR requiere 1 argumento: Rcolor")
     rc = parse_reg(parts[1])
     log(f"GPUCLEAR R{rc}")
     instrs = []
+    instrs += gpu_poll(addr)
     instrs += pseudo_st_reg(GPU_COLOR, rc)
     instrs += pseudo_st_imm(GPU_CMD, 2)
-    assert len(instrs) == 5, f"GPUCLEAR genero {len(instrs)} instrucciones, esperado 5"
+    assert len(instrs) == 9, f"GPUCLEAR genero {len(instrs)} instrucciones, esperado 9"
     return instrs
 
 # ==========================================
@@ -277,8 +296,8 @@ def instruction_size(line):
     op = parts[0].upper()
     sizes = {
         'MUL':      2,
-        'GPULINE':  13,
-        'GPUCLEAR': 5,
+        'GPULINE':  17,
+        'GPUCLEAR': 9,
         'PUSH':     2,
         'POP':      2,
         'RET':      3,
@@ -449,6 +468,20 @@ def assemble(input_file, output_file, debug=False):
 
             elif op == 'GPUCLEAR':
                 instrs = expand_gpu_clear(parts, current_address)
+
+            # --- CMP: resta sin guardar resultado (no tiene Rd) ---
+            elif op == 'CMP':
+                ra = parse_reg(parts[1])
+                is_reg, val = parse_val(parts[2], labels)
+                instrs = [pack_instruction(
+                    reg_d  = 0,
+                    reg_a  = ra,
+                    reg_b  = val if is_reg else 0,
+                    imm    = 0   if is_reg else val,
+                    alu_op = ALU_OPS['CMP'],
+                    alu_src= 0 if is_reg else 1,
+                    we     = 0,
+                )]
 
             # --- ALU generica ---
             elif op in ALU_OPS:

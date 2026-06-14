@@ -82,6 +82,10 @@
       <a name="label" val="Keyboard"/>
       <a name="width" val="7"/>
     </comp>
+    <comp lib="0" loc="(1600,1130)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="KeyboardClock"/>
+    </comp>
     <comp lib="0" loc="(1600,970)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="Instruction"/>
@@ -194,7 +198,7 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
 20001190000 20009220000 70000880001 8000000027 20000020000 30001220000 60000180000 20005530000
 5*20003330000 20004330000 88e300000 e0000090000 10009800000 400000005c 20007550000 e0000090000
 10009200000 2000000058 20006440000 20000090000 20009220000 20001190000 30009220000 800000005a
-20000090000 20009220000 70000880001 8000000043 e00000f0000 800000005c
+20000090000 20009220000 70000880001 8000000043 e00000f0000
 </a>
       <a name="dataWidth" val="64"/>
     </comp>
@@ -360,6 +364,10 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
       <a name="appearance" val="NewPins"/>
       <a name="label" val="Keyboard"/>
       <a name="width" val="7"/>
+    </comp>
+    <comp lib="0" loc="(3910,3300)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="KeyboardClock"/>
     </comp>
     <comp lib="0" loc="(4130,3120)" name="Pin">
       <a name="appearance" val="NewPins"/>
@@ -1188,7 +1196,19 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
       <a name="radix" val="16"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(820,2010)" name="Constant"/>
+    <comp lib="0" loc="(790,2050)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="KeyboardClock"/>
+    </comp>
+    <comp lib="0" loc="(810,1950)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="R15"/>
+      <a name="width" val="16"/>
+    </comp>
+    <comp lib="0" loc="(810,1970)" name="Constant">
+      <a name="value" val="0x2"/>
+      <a name="width" val="16"/>
+    </comp>
     <comp lib="0" loc="(830,360)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="Cl"/>
@@ -1197,9 +1217,6 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
       <a name="appearance" val="NewPins"/>
       <a name="label" val="Keyboard"/>
       <a name="width" val="7"/>
-    </comp>
-    <comp lib="0" loc="(840,2030)" name="Clock">
-      <a name="appearance" val="NewPins"/>
     </comp>
     <comp lib="0" loc="(910,1090)" name="Tunnel">
       <a name="label" val="R7"/>
@@ -1283,6 +1300,12 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     <comp lib="1" loc="(810,1910)" name="OR Gate">
       <a name="size" val="30"/>
     </comp>
+    <comp lib="1" loc="(840,2010)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(840,2040)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
     <comp lib="2" loc="(1420,1610)" name="Multiplexer">
       <a name="select" val="3"/>
       <a name="width" val="16"/>
@@ -1300,6 +1323,10 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     </comp>
     <comp lib="2" loc="(720,1490)" name="Decoder">
       <a name="select" val="3"/>
+    </comp>
+    <comp lib="3" loc="(850,1960)" name="Comparator">
+      <a name="mode" val="unsigned"/>
+      <a name="width" val="16"/>
     </comp>
     <comp lib="5" loc="(840,1060)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
@@ -1442,6 +1469,7 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     <wire from="(740,1440)" to="(800,1440)"/>
     <wire from="(740,1450)" to="(790,1450)"/>
     <wire from="(740,1460)" to="(780,1460)"/>
+    <wire from="(740,1470)" to="(770,1470)"/>
     <wire from="(740,440)" to="(740,710)"/>
     <wire from="(740,710)" to="(840,710)"/>
     <wire from="(750,1090)" to="(750,1190)"/>
@@ -1476,11 +1504,18 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     <wire from="(750,990)" to="(840,990)"/>
     <wire from="(760,430)" to="(760,610)"/>
     <wire from="(760,610)" to="(840,610)"/>
+    <wire from="(770,1470)" to="(770,2000)"/>
+    <wire from="(770,2000)" to="(770,2030)"/>
+    <wire from="(770,2000)" to="(810,2000)"/>
+    <wire from="(770,2030)" to="(810,2030)"/>
     <wire from="(770,420)" to="(770,510)"/>
     <wire from="(770,510)" to="(840,510)"/>
     <wire from="(780,1460)" to="(780,1900)"/>
     <wire from="(790,1450)" to="(790,1810)"/>
     <wire from="(790,1810)" to="(840,1810)"/>
+    <wire from="(790,2020)" to="(790,2050)"/>
+    <wire from="(790,2020)" to="(810,2020)"/>
+    <wire from="(790,2050)" to="(810,2050)"/>
     <wire from="(800,1440)" to="(800,1710)"/>
     <wire from="(800,1710)" to="(840,1710)"/>
     <wire from="(810,1430)" to="(810,1610)"/>
@@ -1488,7 +1523,6 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     <wire from="(810,1910)" to="(840,1910)"/>
     <wire from="(820,1420)" to="(820,1510)"/>
     <wire from="(820,1510)" to="(840,1510)"/>
-    <wire from="(820,2010)" to="(840,2010)"/>
     <wire from="(830,1030)" to="(830,1130)"/>
     <wire from="(830,1030)" to="(840,1030)"/>
     <wire from="(830,1130)" to="(830,1230)"/>
@@ -1521,8 +1555,10 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     <wire from="(830,830)" to="(840,830)"/>
     <wire from="(830,930)" to="(830,1030)"/>
     <wire from="(830,930)" to="(840,930)"/>
+    <wire from="(840,2030)" to="(840,2040)"/>
     <wire from="(850,1830)" to="(850,1840)"/>
-    <wire from="(850,2030)" to="(850,2040)"/>
+    <wire from="(850,1950)" to="(870,1950)"/>
+    <wire from="(850,2010)" to="(850,2020)"/>
     <wire from="(870,1050)" to="(970,1050)"/>
     <wire from="(870,1150)" to="(970,1150)"/>
     <wire from="(870,1250)" to="(970,1250)"/>
@@ -1563,7 +1599,7 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="test"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="2048000.0"/>
+    <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(1970,1010)" name="Constant">
       <a name="value" val="0x0"/>
     </comp>
@@ -1636,6 +1672,7 @@ e0000090000 30001910000 10001000000 2000000040 20001120000 30000220000 600000800
       <a name="width" val="64"/>
     </comp>
     <comp loc="(2190,970)" name="GPU"/>
+    <wire from="(1950,1050)" to="(1970,1050)"/>
     <wire from="(2320,930)" to="(2320,960)"/>
     <wire from="(2360,930)" to="(2360,960)"/>
     <wire from="(2370,930)" to="(2370,990)"/>

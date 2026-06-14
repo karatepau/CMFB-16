@@ -19,8 +19,8 @@
   <lib desc="#BFH-Praktika" name="10"/>
   <lib desc="#Input/Output-Extra" name="11"/>
   <lib desc="#Soc" name="12"/>
-  <lib desc="file#GPU/GMFB.circ" name="13"/>
-  <lib desc="file#ALU/AMFB-16.circ" name="14"/>
+  <lib desc="file#ALU/AMFB-16.circ" name="13"/>
+  <lib desc="file#GPU/GMFB.circ" name="14"/>
   <main name="FullComputer"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
@@ -317,7 +317,7 @@
     <comp lib="1" loc="(1320,1430)" name="AND Gate">
       <a name="size" val="30"/>
     </comp>
-    <comp lib="13" loc="(1470,1630)" name="GPU"/>
+    <comp lib="14" loc="(1470,1630)" name="GPU"/>
     <comp lib="2" loc="(1350,1540)" name="Multiplexer">
       <a name="width" val="16"/>
     </comp>
@@ -329,9 +329,12 @@
       <a name="addrWidth" val="16"/>
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 16 64
-a000000ffff a000001000a a000002000a a0000030036 a0000040036 a00000dfffd 200c0dd0000 44000d00000
+a000000f800 a000001000a a000002000a a0000030036 a0000040036 a00000dfffd 200c0dd0000 44000d00000
 40800000005 a00000dfff8 a1d00000 a00000dfff9 a2d00000 a00000dfffa a3d00000 a00000dfffb
-a4d00000 a00000dfffc a0d00000 a00000dfffd a00000e0001 aed00000 41000000016
+a4d00000 a00000dfffc a0d00000 a00000dfffd a00000e0001 aed00000 a0000010036 a000002000a
+a000003000a a0000040036 a00000dfffd 200c0dd0000 44000d00000 4080000001a a00000dfff8 a1d00000
+a00000dfff9 a2d00000 a00000dfffa a3d00000 a00000dfffb a4d00000 a00000dfffc a0d00000
+a00000dfffd a00000e0001 aed00000 4100000002b
 </a>
       <a name="dataWidth" val="64"/>
     </comp>
@@ -719,24 +722,24 @@ a4d00000 a00000dfffc a0d00000 a00000dfffd a00000e0001 aed00000 41000000016
     </comp>
     <comp lib="0" loc="(800,1820)" name="Constant"/>
     <comp lib="1" loc="(1420,1820)" name="NOT Gate"/>
-    <comp lib="14" loc="(1020,1000)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1080)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1160)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1240)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1320)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1400)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1480)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1560)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1640)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1720)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,1800)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,600)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,680)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,760)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,840)" name="minihalfadder"/>
-    <comp lib="14" loc="(1020,920)" name="minihalfadder"/>
-    <comp lib="14" loc="(1670,1700)" name="reverse"/>
-    <comp lib="14" loc="(1790,1790)" name="reverse"/>
+    <comp lib="13" loc="(1020,1000)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1080)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1160)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1240)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1320)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1400)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1480)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1560)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1640)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1720)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,1800)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,600)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,680)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,760)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,840)" name="minihalfadder"/>
+    <comp lib="13" loc="(1020,920)" name="minihalfadder"/>
+    <comp lib="13" loc="(1670,1700)" name="reverse"/>
+    <comp lib="13" loc="(1790,1790)" name="reverse"/>
     <comp lib="2" loc="(1440,1790)" name="Multiplexer">
       <a name="width" val="16"/>
     </comp>
@@ -1553,11 +1556,11 @@ a4d00000 a00000dfffc a0d00000 a00000dfffd a00000e0001 aed00000 41000000016
       <a name="type" val="output"/>
       <a name="width" val="6"/>
     </comp>
-    <comp lib="14" loc="(4470,3180)" name="reverse"/>
-    <comp lib="14" loc="(4470,3230)" name="reverse"/>
-    <comp lib="14" loc="(4750,3210)" name="ALU"/>
-    <comp lib="14" loc="(4970,3210)" name="reverse"/>
-    <comp lib="14" loc="(4970,3230)" name="reverse"/>
+    <comp lib="13" loc="(4470,3180)" name="reverse"/>
+    <comp lib="13" loc="(4470,3230)" name="reverse"/>
+    <comp lib="13" loc="(4750,3210)" name="ALU"/>
+    <comp lib="13" loc="(4970,3210)" name="reverse"/>
+    <comp lib="13" loc="(4970,3230)" name="reverse"/>
     <comp lib="5" loc="(5070,3260)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="width" val="6"/>
